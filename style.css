@@ -59,7 +59,7 @@ table {
 
 #gameArea {
   width: 300px;
-  height: 800px;
+  height: 100vh;
   position: relative;
   margin: auto;
   background: #222;

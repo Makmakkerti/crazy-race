@@ -4,9 +4,11 @@ const score = document.querySelector('.scores'),
   car = document.createElement('div');
 
 start.addEventListener('click', startGame);
-document.addEventListener('keydown', startRun);
-document.addEventListener('keyup', stopRun);
-gameArea.style.height = document.documentElement.clientHeight;
+document.addEventListener('keydown', move);
+document.addEventListener('keyup', stop);
+
+const roadHeight = document.documentElement.clientHeight;
+gameArea.style.height = roadHeight;
 
 car.classList.add('car');
 
@@ -21,12 +23,15 @@ const settings = {
   start: false,
   score: 0,
   carSpeed: 3,
-  roadSpeed: 4
+  roadSpeed: 4,
+  traffic: 3
 }
+
+const getElementsQuantity = (elementHeight) => roadHeight / elementHeight + 1;
 
 function startGame(){
   start.classList.add('hide');
-  for (let i = 0; i < 20; i += 1) {
+  for (let i = 0; i < getElementsQuantity(100); i += 1) {
     const roadLine = document.createElement('div');
     roadLine.classList.add('roadLine');
     roadLine.style.top = `${i * 85}px`;
@@ -45,7 +50,7 @@ function moveRoad() {
   roadLines.forEach(line => {
     line.style.top = `${line.offsetTop + settings.roadSpeed}px`;
 
-    if (line.offsetTop >= document.documentElement.clientHeight) {
+    if (line.offsetTop >= roadHeight) {
       line.style.top = '-100px';
     }
   });
@@ -63,7 +68,7 @@ function playGame(){
     if(keys.ArrowUp && settings.y > 0){
       settings.y -= settings.carSpeed;
     }
-    if(keys.ArrowDown){
+    if(keys.ArrowDown && settings.y < roadHeight - 110){
       settings.y += settings.carSpeed;
     }
   }
@@ -72,12 +77,14 @@ function playGame(){
   requestAnimationFrame(playGame);
 };
 
-function startRun(e){
-  e.preventDefault();
-  keys[e.key] = true;
+function move(event){
+  event.preventDefault();
+  if (keys.hasOwnProperty(event.key)) {
+    keys[event.key] = true;
+  }
 }
 
-function stopRun(e){
+function stop(e){
   e.preventDefault();
   keys[e.key] = false;
 }
