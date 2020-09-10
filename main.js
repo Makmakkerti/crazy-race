@@ -31,11 +31,20 @@ const getElementsQuantity = (elementHeight) => roadHeight / elementHeight + 1;
 
 function startGame(){
   start.classList.add('hide');
-  for (let i = 0; i < getElementsQuantity(100); i += 1) {
+  for (let i = 0; i < getElementsQuantity(50); i += 1) {
     const roadLine = document.createElement('div');
     roadLine.classList.add('roadLine');
     roadLine.style.top = `${i * 85}px`;
     gameArea.appendChild(roadLine);
+  }
+
+  for (let k = 1; k < getElementsQuantity(100 * settings.traffic); k += 1) {
+    const enemy = document.createElement('div');
+    enemy.classList.add('enemy');
+    enemy.style.top = `${-100 * settings.traffic * k}px`;
+    enemy.style.left = `${Math.floor(Math.random() * (gameArea.offsetWidth - 50))}px`;
+    enemy.style.background = 'transparent url("./images/enemy.png") center / cover no-repeat';
+    gameArea.appendChild(enemy);
   }
 
   settings.start = true;
@@ -45,8 +54,20 @@ function startGame(){
   requestAnimationFrame(playGame);
 }
 
+const moveEnemy = () => {
+  const enemies = document.querySelectorAll('.enemy');
+  enemies.forEach(enemy => {
+    enemy.style.top = `${enemy.offsetTop + settings.roadSpeed / 2}px`;
+
+    if (enemy.offsetTop >= roadHeight) {
+      enemy.style.top = '-100px';
+      enemy.style.left = `${Math.floor(Math.random() * (gameArea.offsetWidth - 50))}px`;
+    }
+  });
+};
+
 function moveRoad() {
-  let roadLines = document.querySelectorAll('.roadLine');
+  const roadLines = document.querySelectorAll('.roadLine');
   roadLines.forEach(line => {
     line.style.top = `${line.offsetTop + settings.roadSpeed}px`;
 
@@ -59,6 +80,7 @@ function moveRoad() {
 function playGame(){
   if(settings.start){
     moveRoad();
+    moveEnemy();
     if(keys.ArrowLeft && settings.x > 0){
       settings.x -= settings.carSpeed;
     }

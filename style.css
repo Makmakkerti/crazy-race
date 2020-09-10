@@ -1,4 +1,4 @@
-/** RESET CSS
+/** RESET CSS **/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,7 +25,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
+  overflow: hidden;
 }
 ol, ul {
 	list-style: none;
@@ -48,13 +49,13 @@ table {
   display: none;
 }
 
-.car {
+.car, .enemy {
   width: 50px;
   height: 100px;
   background: transparent url('./images/player.png') center / cover no-repeat;
   position: absolute;
   left: 125px;
-  bottom: 10px;
+  bottom: 30px;
 }
 
 #gameArea {
