@@ -23,13 +23,18 @@ const settings = {
   start: false,
   score: 0,
   carSpeed: 3,
-  roadSpeed: 4,
+  roadSpeed: 8,
   traffic: 3
 }
 
 const getElementsQuantity = (elementHeight) => roadHeight / elementHeight + 1;
 
 function startGame(){
+  const music = document.getElementById("music");
+  const carnage = document.getElementById("carnage");
+  music.play();
+  carnage.play();
+
   start.classList.add('hide');
   for (let i = 0; i < getElementsQuantity(50); i += 1) {
     const roadLine = document.createElement('div');
