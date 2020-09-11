@@ -76,15 +76,27 @@ table {
 }
 
 #start {
+  width: 100%;
   position: absolute;
-    top: 50%;
-    z-index: 999;
-    left: 46.5vw;
-    border: 2px solid red;
-    font-size: 18px;
-    text-shadow: 1px 1px 2px #b19408;
-    color: #cc2b07;
-    background: #ccc;
-    padding: 20px;
-    cursor: pointer;
+  bottom: 0;
+  z-index: 999;
+  border: 2px solid #222;
+  font-size: 20px;
+  color: #cc2b07;
+  background: #fff;
+  padding: 20px;
+  cursor: pointer;
+}
+
+#topMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  padding: 1rem 0;
+  z-index: 200;
+  font-size: 1.5rem;
+  color: rgb(174, 174, 194);
+  text-align: center;
 }
