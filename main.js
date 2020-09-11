@@ -1,7 +1,7 @@
 const scores = document.querySelector('#scores'),
   start = document.querySelector('#start'),
   gameArea = document.querySelector('#gameArea'),
-  car = document.createElement('div'),
+  car = document.createElement('div');
   // const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
   const keys = {
@@ -106,7 +106,6 @@ function startGame(){
     gameArea.appendChild(enemy);
   }
 
-  gameArea.appendChild(controls);
   settings.start = true;
   gameArea.appendChild(car);
   settings.x = car.offsetLeft;
