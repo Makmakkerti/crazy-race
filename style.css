@@ -49,6 +49,26 @@ table {
   display: none;
 }
 
+#controls {
+  width: 300px;
+  position: absolute;
+  bottom: 100px;
+  margin: auto;
+}
+
+#controls button{
+  background-color: #ffffff;
+  border: none;
+  width: 23.6%;
+  color: #222;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+}
+
 .car, .enemy {
   width: 50px;
   height: 100px;
