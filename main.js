@@ -1,18 +1,22 @@
 const scores = document.querySelector('#scores'),
   start = document.querySelector('#start'),
   gameArea = document.querySelector('#gameArea'),
-  car = document.createElement('div');
-  const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-  if (!isMobile) document.querySelector('#controls').classList.add('hide');
+  car = document.createElement('div'),
+  isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
-  const keys = {
-    ArrowUp: false,
-    ArrowDown: false,
-    ArrowRight: false,
-    ArrowLeft: false,
-  };
+if (isMobile) {
+  document.querySelector('#controls').classList.remove('hide');
+  start.style.bottom = '45vh';
+  car.style.bottom = '90px';
+}
+const keys = {
+  ArrowUp: false,
+  ArrowDown: false,
+  ArrowRight: false,
+  ArrowLeft: false,
+};
 
-  car.classList.add('car');
+car.classList.add('car');
 
 start.addEventListener('click', startGame);
 document.addEventListener('keydown', move);
@@ -35,7 +39,6 @@ const startWords = [
 
 const crash = document.querySelector('#crash');
 crash.volume = 0.4;
-
 const carSpeed = 3;
 const roadSpeed = 10;
 const traffic = 4;
@@ -155,6 +158,8 @@ function playGame(){
     moveEnemy();
     requestAnimationFrame(playGame);
     settings.scores += settings.roadSpeed;
+    if (settings.scores % 5000 === 0) settings.roadSpeed += 1;
+    if (settings.scores % 15000 === 0) settings.traffic += 1;
     scores.textContent = `SCORES: ${settings.scores}`;
 
     if(keys.ArrowLeft && settings.x > 0){
@@ -188,8 +193,6 @@ if (isMobile) {
   document.querySelector('#ArrowUp').addEventListener('touchend', stop);
   document.querySelector('#ArrowDown').addEventListener('touchend', stop);
 }
-
-
 
 function move(event){
   if (!isMobile) {

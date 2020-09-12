@@ -50,7 +50,7 @@ table {
 }
 
 #controls {
-  width: 300px;
+  width: 100vw;
   position: absolute;
   margin: auto;
   bottom: 20px;
@@ -64,6 +64,7 @@ table {
   text-decoration: none;
   display: inline-block;
   margin: auto;
+  background-color: #555;
 }
 
 .car, .enemy {
