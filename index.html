@@ -8,6 +8,7 @@
 
   <title>Crazy Race</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="main.js" defer></script>
 </head>
 
@@ -28,6 +29,12 @@
   <div class="game">
     <button id="start">Start Race</button>
     <div id="gameArea"></div>
+    <div id="controls">
+      <i class="fa fa-arrow-circle-left" ontouchstart="touchMove(event)" id="ArrowLeft"></i>
+      <i class="fa fa-arrow-circle-right" ontouchstart="touchMove(event)" id="ArrowRight"></i>
+      <i class="fa fa-arrow-circle-up" ontouchstart="touchMove(event)" id="ArrowUp"></i>
+      <i class="fa fa-arrow-circle-down" ontouchstart="touchMove(event)" id="ArrowDown"></i>
+    </div>
   </div>
 
 </body>
